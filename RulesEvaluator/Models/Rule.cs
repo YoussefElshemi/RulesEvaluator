@@ -8,7 +8,7 @@ public class Rule
     
     public string? Field { get; set; }
     
-    public int? Value { get; set; }
+    public object? Value { get; set; }
     
     public Rule[]? And { get; set; }
     

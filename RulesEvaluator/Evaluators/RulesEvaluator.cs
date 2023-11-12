@@ -20,16 +20,21 @@ public class RulesEvaluator<T>
                 throw new ArgumentException($"Field '{rule.Field}' not found in instance.");
             }
 
-            var value = property.GetValue(instance) ?? throw new InvalidOperationException();
+            var value = property.GetValue(instance);
 
             return rule.Condition switch
             {
-                Conditions.EqualTo => value.Equals(rule.Value),
+                Conditions.IsNull when value is int intValue => intValue == 0,
+                Conditions.IsNull => value == null,
+                
+                Conditions.EqualTo => value?.Equals(rule.Value) ?? rule.Value == null,
                 Conditions.GreaterThan when value is IComparable comparableValue => comparableValue.CompareTo(rule.Value) > 0,
                 Conditions.LessThan when value is IComparable comparableValue => comparableValue.CompareTo(rule.Value) < 0,
                 Conditions.GreaterThanEqual when value is IComparable comparableValue => comparableValue.CompareTo(rule.Value) >= 0,
                 Conditions.LessThanEqual when value is IComparable comparableValue => comparableValue.CompareTo(rule.Value) <= 0,
-                Conditions.Contains when value is string stringValue => stringValue.Contains(rule.Value.ToString()!, StringComparison.OrdinalIgnoreCase),
+                Conditions.Contains when value is string stringValue => stringValue.Contains(rule.Value?.ToString()!, StringComparison.OrdinalIgnoreCase),
+                Conditions.StartsWith when value is string stringValue => stringValue.StartsWith(rule.Value?.ToString()!, StringComparison.OrdinalIgnoreCase),
+                Conditions.EndsWith when value is string stringValue => stringValue.EndsWith(rule.Value?.ToString()!, StringComparison.OrdinalIgnoreCase),
                 _ => throw new ArgumentException($"Unsupported condition: {rule.Condition}")
             };
 

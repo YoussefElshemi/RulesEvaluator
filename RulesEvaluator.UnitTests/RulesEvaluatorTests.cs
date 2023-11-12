@@ -11,7 +11,51 @@ public class RulesEvaluatorTests
     private readonly RulesEvaluator<ExampleObject> _rulesEvaluator = new();
 
     [Fact]
-    public void Test_EqualToCondition_ReturnsTrue()
+    public void Test_Int_IsNullCondition_ReturnsTrue()
+    {
+        // Arrange
+        var rule = new Rule
+        {
+            Field = "Amount",
+            Condition = Conditions.IsNull
+        };
+
+        var value = new ExampleObject
+        {
+            Amount1 = 5
+        };
+        
+        // Act
+        var actual = _rulesEvaluator.Evaluate(rule, value);
+        
+        // Assert
+        Assert.True(actual);
+    }
+    
+    [Fact]
+    public void Test_Int_IsNullCondition_ReturnsFalse()
+    {
+        // Arrange
+        var rule = new Rule
+        {
+            Field = "Amount",
+            Condition = Conditions.IsNull
+        };
+        
+        var value = new ExampleObject
+        {
+            Amount = 7
+        };
+        
+        // Act
+        var actual = _rulesEvaluator.Evaluate(rule, value);
+        
+        // Assert
+        Assert.False(actual);
+    }
+    
+    [Fact]
+    public void Test_Int_EqualToCondition_ReturnsTrue()
     {
         // Arrange
         var rule = new Rule
@@ -34,7 +78,7 @@ public class RulesEvaluatorTests
     }
     
     [Fact]
-    public void Test_EqualToCondition_ReturnsFalse()
+    public void Test_Int_EqualToCondition_ReturnsFalse()
     {
         // Arrange
         var rule = new Rule
@@ -57,7 +101,7 @@ public class RulesEvaluatorTests
     }
     
     [Fact]
-    public void Test_GreaterThanCondition_ReturnsTrue()
+    public void Test_Int_GreaterThanCondition_ReturnsTrue()
     {
         // Arrange
         var rule = new Rule
@@ -80,7 +124,7 @@ public class RulesEvaluatorTests
     }
     
     [Fact]
-    public void Test_GreaterThanCondition_ReturnsFalse()
+    public void Test_Int_GreaterThanCondition_ReturnsFalse()
     {
         // Arrange
         var rule = new Rule
@@ -103,7 +147,7 @@ public class RulesEvaluatorTests
     }
     
     [Fact]
-    public void Test_LessThanCondition_ReturnsTrue()
+    public void Test_Int_LessThanCondition_ReturnsTrue()
     {
         // Arrange
         var rule = new Rule
@@ -126,7 +170,7 @@ public class RulesEvaluatorTests
     }
     
     [Fact]
-    public void Test_LessThanCondition_ReturnsFalse()
+    public void Test_Int_LessThanCondition_ReturnsFalse()
     {
         // Arrange
         var rule = new Rule
@@ -149,7 +193,7 @@ public class RulesEvaluatorTests
     }                                                                                                                                                                                                     
     
     [Fact]
-    public void Test_GreaterThanEqualCondition_ReturnsTrue()
+    public void Test_Int_GreaterThanEqualCondition_ReturnsTrue()
     {
         // Arrange
         var rule = new Rule
@@ -179,7 +223,7 @@ public class RulesEvaluatorTests
     }
     
     [Fact]
-    public void Test_GreaterThanEqualCondition_ReturnsFalse()
+    public void Test_Int_GreaterThanEqualCondition_ReturnsFalse()
     {
         // Arrange
         var rule = new Rule
@@ -202,7 +246,7 @@ public class RulesEvaluatorTests
     }
     
     [Fact]
-    public void Test_LessThanEqualCondition_ReturnsTrue()
+    public void Test_Int_LessThanEqualCondition_ReturnsTrue()
     {
         // Arrange
         var rule = new Rule
@@ -231,7 +275,7 @@ public class RulesEvaluatorTests
     }
     
     [Fact]
-    public void Test_LessThanEqualCondition_ReturnsFalse()
+    public void Test_Int_LessThanEqualCondition_ReturnsFalse()
     {
         // Arrange
         var rule = new Rule
@@ -254,7 +298,7 @@ public class RulesEvaluatorTests
     }
     
     [Fact]
-    public void Test_And_EqualToCondition_ReturnsTrue()
+    public void Test_Int_And_EqualToCondition_ReturnsTrue()
     {
         // Arrange
         var rule = new Rule
@@ -289,7 +333,7 @@ public class RulesEvaluatorTests
     }
     
     [Fact]
-    public void Test_And_EqualToCondition_ReturnsFalse()
+    public void Test_Int_And_EqualToCondition_ReturnsFalse()
     {
         // Arrange
         var rule = new Rule
@@ -324,7 +368,7 @@ public class RulesEvaluatorTests
     }
     
     [Fact]
-    public void Test_Not_EqualToCondition_ReturnsTrue()
+    public void Test_Int_Not_EqualToCondition_ReturnsTrue()
     {
         // Arrange
         var rule = new Rule
@@ -349,7 +393,7 @@ public class RulesEvaluatorTests
     }
     
     [Fact]
-    public void Test_Not_EqualToCondition_ReturnsFalse()
+    public void Test_Int_Not_EqualToCondition_ReturnsFalse()
     {
         // Arrange
         var rule = new Rule
@@ -374,7 +418,7 @@ public class RulesEvaluatorTests
     }
     
     [Fact]
-    public void Test_Or_EqualToCondition_ReturnsTrue()
+    public void Test_Int_Or_EqualToCondition_ReturnsTrue()
     {
         // Arrange
         var rule = new Rule
@@ -414,7 +458,7 @@ public class RulesEvaluatorTests
     }
     
     [Fact]
-    public void Test_Or_EqualToCondition_ReturnsFalse()
+    public void Test_Int_Or_EqualToCondition_ReturnsFalse()
     {
         // Arrange
         var rule = new Rule
@@ -448,7 +492,7 @@ public class RulesEvaluatorTests
     }
     
     [Fact]
-    public void Test_Not_And_EqualToCondition_ReturnsTrue()
+    public void Test_Int_Not_And_EqualToCondition_ReturnsTrue()
     {
         // Arrange
         var rule = new Rule
@@ -485,7 +529,7 @@ public class RulesEvaluatorTests
     }
     
     [Fact]
-    public void Test_Not_And_EqualToCondition_ReturnsFalse()
+    public void Test_Int_Not_And_EqualToCondition_ReturnsFalse()
     {
         // Arrange
         var rule = new Rule
@@ -522,7 +566,7 @@ public class RulesEvaluatorTests
     }
     
     [Fact]
-    public void Test_And_Or_Or_EqualToCondition_ReturnsTrue()
+    public void Test_Int_And_Or_Or_EqualToCondition_ReturnsTrue()
     {
         // Arrange
         var rule = new Rule
@@ -577,7 +621,7 @@ public class RulesEvaluatorTests
     }
     
     [Fact]
-    public void Test_And_Or_Or_EqualToCondition_ReturnsFalse()
+    public void Test_Int_And_Or_Or_EqualToCondition_ReturnsFalse()
     {
         // Arrange
         var rule = new Rule
@@ -627,6 +671,190 @@ public class RulesEvaluatorTests
         // Act
         var actual = _rulesEvaluator.Evaluate(rule, value);
 
+        // Assert
+        Assert.False(actual);
+    }
+    
+    [Fact]
+    public void Test_String_EqualToCondition_ReturnsTrue()
+    {
+        // Arrange
+        var rule = new Rule
+        {
+            Field = "Field",
+            Condition = Conditions.EqualTo,
+            Value = "Foo"
+        };
+
+        var value = new ExampleObject
+        {
+            Field = "Foo"
+        };
+        
+        // Act
+        var actual = _rulesEvaluator.Evaluate(rule, value);
+        
+        // Assert
+        Assert.True(actual);
+    }
+    
+    [Fact]
+    public void Test_String_EqualToCondition_ReturnsFalse()
+    {
+        // Arrange
+        var rule = new Rule
+        {
+            Field = "Field",
+            Condition = Conditions.EqualTo,
+            Value = "Foo"
+        };
+
+        var value = new ExampleObject
+        {
+            Field = "Bar"
+        };
+        
+        // Act
+        var actual = _rulesEvaluator.Evaluate(rule, value);
+        
+        // Assert
+        Assert.False(actual);
+    }
+    
+    [Fact]
+    public void Test_String_ContainsCondition_ReturnsTrue()
+    {
+        // Arrange
+        var rule = new Rule
+        {
+            Field = "Field",
+            Condition = Conditions.Contains,
+            Value = "Foo"
+        };
+
+        var value = new ExampleObject
+        {
+            Field = "Foobar"
+        };
+        
+        // Act
+        var actual = _rulesEvaluator.Evaluate(rule, value);
+        
+        // Assert
+        Assert.True(actual);
+    }
+    
+    [Fact]
+    public void Test_String_ContainsCondition_ReturnsFalse()
+    {
+        // Arrange
+        var rule = new Rule
+        {
+            Field = "Field",
+            Condition = Conditions.Contains,
+            Value = "Foo"
+        };
+
+        var value = new ExampleObject
+        {
+            Field = "Fobar"
+        };
+        
+        // Act
+        var actual = _rulesEvaluator.Evaluate(rule, value);
+        
+        // Assert
+        Assert.False(actual);
+    }
+    
+    [Fact]
+    public void Test_String_StartsWithCondition_ReturnsTrue()
+    {
+        // Arrange
+        var rule = new Rule
+        {
+            Field = "Field",
+            Condition = Conditions.StartsWith,
+            Value = "Foo"
+        };
+
+        var value = new ExampleObject
+        {
+            Field = "Foobar"
+        };
+        
+        // Act
+        var actual = _rulesEvaluator.Evaluate(rule, value);
+        
+        // Assert
+        Assert.True(actual);
+    }
+    
+    [Fact]
+    public void Test_String_StartsWithCondition_ReturnsFalse()
+    {
+        // Arrange
+        var rule = new Rule
+        {
+            Field = "Field",
+            Condition = Conditions.StartsWith,
+            Value = "bar"
+        };
+
+        var value = new ExampleObject
+        {
+            Field = "Foobar"
+        };
+        
+        // Act
+        var actual = _rulesEvaluator.Evaluate(rule, value);
+        
+        // Assert
+        Assert.False(actual);
+    }
+    
+    [Fact]
+    public void Test_String_EndsWithCondition_ReturnsTrue()
+    {
+        // Arrange
+        var rule = new Rule
+        {
+            Field = "Field",
+            Condition = Conditions.EndsWith,
+            Value = "bar"
+        };
+
+        var value = new ExampleObject
+        {
+            Field = "Foobar"
+        };
+        
+        // Act
+        var actual = _rulesEvaluator.Evaluate(rule, value);
+        
+        // Assert
+        Assert.True(actual);
+    }
+    
+    [Fact]
+    public void Test_String_EndsWithCondition_ReturnsFalse()
+    {
+        // Arrange
+        var rule = new Rule
+        {
+            Field = "Field",
+            Condition = Conditions.EndsWith,
+            Value = "Foo"
+        };
+
+        var value = new ExampleObject
+        {
+            Field = "Bar"
+        };
+        
+        // Act
+        var actual = _rulesEvaluator.Evaluate(rule, value);
+        
         // Assert
         Assert.False(actual);
     }
