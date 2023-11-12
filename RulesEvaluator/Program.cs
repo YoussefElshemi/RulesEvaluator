@@ -2,7 +2,7 @@
 using RulesEvaluator.Extensions;
 using RulesEvaluator.Models;
 
-const string jsonRuleSet = @"
+var jsonRuleSet = @"
 {
     ""And"": [
         {
@@ -33,20 +33,19 @@ const string jsonRuleSet = @"
 }";
 
 var rule = JsonConvert.DeserializeObject<Rule>(jsonRuleSet)!;
-var values = new Dictionary<string, int>
-{
-    { "Field", 7 },
-    { "Field2", 6 },
-    { "Field3", 7 }
-};
+var customInstance = new CustomClass { Field = 7, Field2 = 6, Field3 = 7 };
 
-var result = rule.Evaluate(values);
+var rulesEvaluator = new RulesEvaluator<CustomClass>();
+var result = rulesEvaluator.Evaluate(rule, customInstance);
 
-if (result)
+Console.WriteLine(result ? "SEPA" : "Not SEPA");
+
+public class CustomClass
 {
-    Console.WriteLine("SEPA");
-}
-else
-{
-    Console.WriteLine("Not SEPA");
+    public int Field { get; set; }
+    
+    public int Field2 { get; set; }
+    
+    public int Field3 { get; set; }
+
 }

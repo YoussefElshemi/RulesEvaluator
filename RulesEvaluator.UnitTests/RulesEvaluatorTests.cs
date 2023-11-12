@@ -1,11 +1,15 @@
 using RulesEvaluator.Enums;
 using RulesEvaluator.Extensions;
 using RulesEvaluator.Models;
+using RulesEvaluator.UnitTests.Models;
 
 namespace RulesEvaluator.UnitTests;
 
 public class RulesEvaluatorTests
 {
+    
+    private readonly RulesEvaluator<ExampleObject> _rulesEvaluator = new();
+
     [Fact]
     public void Test_EqualToCondition_ReturnsTrue()
     {
@@ -16,14 +20,14 @@ public class RulesEvaluatorTests
             Condition = Conditions.EqualTo,
             Value = 5
         };
-        
-        var value = new Dictionary<string, int>
+
+        var value = new ExampleObject
         {
-            { "Amount", 5 }
-        }; 
+            Amount = 5
+        };
         
         // Act
-        var actual = rule.Evaluate(value);
+        var actual = _rulesEvaluator.Evaluate(rule, value);
         
         // Assert
         Assert.True(actual);
@@ -40,13 +44,13 @@ public class RulesEvaluatorTests
             Value = 5
         };
         
-        var value = new Dictionary<string, int>
+        var value = new ExampleObject
         {
-            { "Amount", 7 }
-        }; 
+            Amount = 7
+        };
         
         // Act
-        var actual = rule.Evaluate(value);
+        var actual = _rulesEvaluator.Evaluate(rule, value);
         
         // Assert
         Assert.False(actual);
@@ -63,14 +67,14 @@ public class RulesEvaluatorTests
             Value = 5
         };
         
-        var value = new Dictionary<string, int>
+        var value = new ExampleObject
         {
-            { "Amount", 6 }
-        }; 
+            Amount = 6
+        };
         
         // Act
-        var actual = rule.Evaluate(value);
-        
+        var actual = _rulesEvaluator.Evaluate(rule, value);
+
         // Assert
         Assert.True(actual);
     }
@@ -86,14 +90,14 @@ public class RulesEvaluatorTests
             Value = 5
         };
         
-        var value = new Dictionary<string, int>
+        var value = new ExampleObject
         {
-            { "Amount", 4 }
-        }; 
+            Amount = 4
+        };
         
         // Act
-        var actual = rule.Evaluate(value);
-        
+        var actual = _rulesEvaluator.Evaluate(rule, value);
+
         // Assert
         Assert.False(actual);
     }
@@ -109,14 +113,14 @@ public class RulesEvaluatorTests
             Value = 5
         };
         
-        var value = new Dictionary<string, int>
+        var value = new ExampleObject
         {
-            { "Amount", 4 }
-        }; 
+            Amount = 4
+        };
         
         // Act
-        var actual = rule.Evaluate(value);
-        
+        var actual = _rulesEvaluator.Evaluate(rule, value);
+
         // Assert
         Assert.True(actual);
     }
@@ -132,14 +136,14 @@ public class RulesEvaluatorTests
             Value = 5
         };
         
-        var value = new Dictionary<string, int>
+        var value = new ExampleObject
         {
-            { "Amount", 6 }
-        }; 
+            Amount = 6
+        };
         
         // Act
-        var actual = rule.Evaluate(value);
-        
+        var actual = _rulesEvaluator.Evaluate(rule, value);
+
         // Assert
         Assert.False(actual);
     }                                                                                                                                                                                                     
@@ -155,19 +159,20 @@ public class RulesEvaluatorTests
             Value = 5
         };
         
-        var valueGreater = new Dictionary<string, int>
+        var valueGreater = new ExampleObject
         {
-            { "Amount", 6 }
-        }; 
+            Amount = 6
+        };
         
-        var valueEqual = new Dictionary<string, int>
+        var valueEqual = new ExampleObject
         {
-            { "Amount", 5 }
+            Amount = 5
         };
         
         // Act
-        var actualGreater = rule.Evaluate(valueGreater);
-        var actualEqual = rule.Evaluate(valueEqual);
+        var actualGreater = _rulesEvaluator.Evaluate(rule, valueGreater);
+        var actualEqual = _rulesEvaluator.Evaluate(rule, valueEqual);
+
 
         // Assert
         Assert.True(actualGreater && actualEqual);
@@ -184,14 +189,14 @@ public class RulesEvaluatorTests
             Value = 5
         };
         
-        var value = new Dictionary<string, int>
+        var value = new ExampleObject
         {
-            { "Amount", 4 }
-        }; 
+            Amount = 4
+        };
         
         // Act
-        var actual = rule.Evaluate(value);
-        
+        var actual = _rulesEvaluator.Evaluate(rule, value);
+
         // Assert
         Assert.False(actual);
     }
@@ -207,19 +212,19 @@ public class RulesEvaluatorTests
             Value = 6
         };
          
-        var valueLess = new Dictionary<string, int>
+        var valueLess = new ExampleObject
         {
-            { "Amount", 6 }
-        }; 
+            Amount = 6
+        };
         
-        var valueEqual = new Dictionary<string, int>
+        var valueEqual = new ExampleObject
         {
-            { "Amount", 5 }
+            Amount = 5
         };
         
         // Act
-        var actualLess = rule.Evaluate(valueLess);
-        var actualEqual = rule.Evaluate(valueEqual);
+        var actualLess = _rulesEvaluator.Evaluate(rule, valueLess);
+        var actualEqual = _rulesEvaluator.Evaluate(rule, valueEqual);
 
         // Assert
         Assert.True(actualLess && actualEqual);
@@ -236,14 +241,14 @@ public class RulesEvaluatorTests
             Value = 5
         };
         
-        var value = new Dictionary<string, int>
+        var value = new ExampleObject
         {
-            { "Amount", 6 }
-        }; 
+            Amount = 6
+        };
         
         // Act
-        var actual = rule.Evaluate(value);
-        
+        var actual = _rulesEvaluator.Evaluate(rule, value);
+
         // Assert
         Assert.False(actual);
     }
@@ -270,14 +275,14 @@ public class RulesEvaluatorTests
             }
         };
          
-        var value = new Dictionary<string, int>
+        var value = new ExampleObject
         {
-            { "Amount1", 5 },
-            { "Amount2", 6 }
-        }; 
+            Amount1 = 5,
+            Amount2 = 6
+        };
         
         // Act
-        var actual = rule.Evaluate(value);
+        var actual = _rulesEvaluator.Evaluate(rule, value);
 
         // Assert
         Assert.True(actual);
@@ -305,14 +310,14 @@ public class RulesEvaluatorTests
             }
         };
          
-        var value = new Dictionary<string, int>
+        var value = new ExampleObject
         {
-            { "Amount1", 6 },
-            { "Amount2", 6 }
-        }; 
+            Amount1 = 6,
+            Amount2 = 6
+        };
         
         // Act
-        var actual = rule.Evaluate(value);
+        var actual = _rulesEvaluator.Evaluate(rule, value);
 
         // Assert
         Assert.False(actual);
@@ -331,13 +336,13 @@ public class RulesEvaluatorTests
             }
         };
          
-        var value = new Dictionary<string, int>
+        var value = new ExampleObject
         {
-            { "Amount", 5 }
-        }; 
+            Amount = 5
+        };
         
         // Act
-        var actual = rule.Evaluate(value);
+        var actual = _rulesEvaluator.Evaluate(rule, value);
 
         // Assert
         Assert.True(actual);
@@ -356,13 +361,13 @@ public class RulesEvaluatorTests
             }
         };
          
-        var value = new Dictionary<string, int>
+        var value = new ExampleObject
         {
-            { "Amount", 6 }
+            Amount = 6
         }; 
         
         // Act
-        var actual = rule.Evaluate(value);
+        var actual = _rulesEvaluator.Evaluate(rule, value);
 
         // Assert
         Assert.False(actual);
@@ -390,19 +395,19 @@ public class RulesEvaluatorTests
             }
         };
          
-        var value1 = new Dictionary<string, int>
+        var value1 = new ExampleObject
         {
-            { "Amount", 5 }
-        }; 
+            Amount = 5
+        };
         
-        var value2 = new Dictionary<string, int>
+        var value2 = new ExampleObject
         {
-            { "Amount", 6 }
+            Amount = 6
         };
         
         // Act
-        var actual1 = rule.Evaluate(value1);
-        var actual2 = rule.Evaluate(value2);
+        var actual1 = _rulesEvaluator.Evaluate(rule, value1);
+        var actual2 = _rulesEvaluator.Evaluate(rule, value2);
 
         // Assert
         Assert.True(actual1 && actual2);
@@ -430,13 +435,13 @@ public class RulesEvaluatorTests
             }
         };
          
-        var value = new Dictionary<string, int>
+        var value = new ExampleObject
         {
-            { "Amount", 4 }
-        }; 
+            Amount = 4
+        };
         
         // Act
-        var actual = rule.Evaluate(value);
+        var actual = _rulesEvaluator.Evaluate(rule, value);
 
         // Assert
         Assert.False(actual);
@@ -466,14 +471,14 @@ public class RulesEvaluatorTests
             }
         };
          
-        var value = new Dictionary<string, int>
+        var value = new ExampleObject
         {
-            { "Amount1", 5 },
-            { "Amount2", 6 }
-        }; 
+            Amount1 = 5,
+            Amount2 = 6
+        };
         
         // Act
-        var actual = rule.Evaluate(value);
+        var actual = _rulesEvaluator.Evaluate(rule, value);
 
         // Assert
         Assert.True(actual);
@@ -503,14 +508,14 @@ public class RulesEvaluatorTests
             }
         };
          
-        var value = new Dictionary<string, int>
+        var value = new ExampleObject
         {
-            { "Amount1", 5 },
-            { "Amount2", 6 }
-        }; 
+            Amount1 = 5,
+            Amount2 = 6
+        };
         
         // Act
-        var actual = rule.Evaluate(value);
+        var actual = _rulesEvaluator.Evaluate(rule, value);
 
         // Assert
         Assert.True(actual);
@@ -558,14 +563,14 @@ public class RulesEvaluatorTests
             }
         };
          
-        var value = new Dictionary<string, int>
+        var value = new ExampleObject
         {
-            { "Amount1", 5 },
-            { "Amount2", 6 }
-        }; 
+            Amount1 = 5,
+            Amount2 = 6
+        };
         
         // Act
-        var actual = rule.Evaluate(value);
+        var actual = _rulesEvaluator.Evaluate(rule, value);
 
         // Assert
         Assert.True(actual);
@@ -613,14 +618,14 @@ public class RulesEvaluatorTests
             }
         };
          
-        var value = new Dictionary<string, int>
+        var value = new ExampleObject
         {
-            { "Amount1", 5 },
-            { "Amount2", 7 }
-        }; 
+            Amount1 = 5,
+            Amount2 = 7
+        };
         
         // Act
-        var actual = rule.Evaluate(value);
+        var actual = _rulesEvaluator.Evaluate(rule, value);
 
         // Assert
         Assert.False(actual);

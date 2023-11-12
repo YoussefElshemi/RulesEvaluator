@@ -6,5 +6,6 @@ public enum Conditions
     GreaterThan,
     LessThan,
     GreaterThanEqual,
-    LessThanEqual
+    LessThanEqual,
+    Contains
 }
