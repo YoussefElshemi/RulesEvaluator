@@ -1,5 +1,5 @@
 using RulesEvaluator.Enums;
-using RulesEvaluator.Extensions;
+using RulesEvaluator.Evaluators;
 using RulesEvaluator.Models;
 using RulesEvaluator.UnitTests.Models;
 

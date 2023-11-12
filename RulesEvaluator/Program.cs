@@ -1,5 +1,5 @@
 ﻿using Newtonsoft.Json;
-using RulesEvaluator.Extensions;
+using RulesEvaluator.Evaluators;
 using RulesEvaluator.Models;
 
 var jsonRuleSet = @"

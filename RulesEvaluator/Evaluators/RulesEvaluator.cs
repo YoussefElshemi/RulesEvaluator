@@ -1,7 +1,7 @@
 ﻿using RulesEvaluator.Enums;
 using RulesEvaluator.Models;
 
-namespace RulesEvaluator.Extensions;
+namespace RulesEvaluator.Evaluators;
 
 public class RulesEvaluator<T>
 {
