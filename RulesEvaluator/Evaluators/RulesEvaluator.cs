@@ -27,11 +27,11 @@ public class RulesEvaluator<T>
                 Conditions.IsNull when value is int intValue => intValue == 0,
                 Conditions.IsNull => value == null,
                 
-                Conditions.EqualTo => value?.Equals(rule.Value) ?? rule.Value == null,
-                Conditions.GreaterThan when value is IComparable comparableValue => comparableValue.CompareTo(rule.Value) > 0,
-                Conditions.LessThan when value is IComparable comparableValue => comparableValue.CompareTo(rule.Value) < 0,
-                Conditions.GreaterThanEqual when value is IComparable comparableValue => comparableValue.CompareTo(rule.Value) >= 0,
-                Conditions.LessThanEqual when value is IComparable comparableValue => comparableValue.CompareTo(rule.Value) <= 0,
+                Conditions.EqualTo => CompareValues(value, rule.Value) == 0,
+                Conditions.GreaterThan => CompareValues(value, rule.Value) > 0,
+                Conditions.LessThan => CompareValues(value, rule.Value) < 0,
+                Conditions.GreaterThanEqual => CompareValues(value, rule.Value) >= 0,
+                Conditions.LessThanEqual => CompareValues(value, rule.Value) <= 0,
                 Conditions.Contains when value is string stringValue => stringValue.Contains(rule.Value?.ToString()!, StringComparison.OrdinalIgnoreCase),
                 Conditions.StartsWith when value is string stringValue => stringValue.StartsWith(rule.Value?.ToString()!, StringComparison.OrdinalIgnoreCase),
                 Conditions.EndsWith when value is string stringValue => stringValue.EndsWith(rule.Value?.ToString()!, StringComparison.OrdinalIgnoreCase),
@@ -51,5 +51,24 @@ public class RulesEvaluator<T>
         }
         
         return false;
+    }
+
+    private static int CompareValues<T1, T2>(T1 value1, T2 value2)
+    {
+        if (value1 is IComparable<T2> comparable1 && value2 is T1)
+        {
+            return comparable1.CompareTo(value2);
+        }
+        else if (value2 is IComparable<T1> comparable2 && value1 is T2)
+        {
+            return comparable2.CompareTo(value1);
+        }
+        else
+        {
+            var convertedValue1 = value1?.ToString();
+            var convertedValue2 = value2?.ToString();
+
+            return string.Compare(convertedValue1, convertedValue2, StringComparison.Ordinal);
+        }
     }
 }
