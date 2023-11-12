@@ -59,16 +59,15 @@ public class RulesEvaluator<T>
         {
             return comparable1.CompareTo(value2);
         }
-        else if (value2 is IComparable<T1> comparable2 && value1 is T2)
+        
+        if (value2 is IComparable<T1> comparable2 && value1 is T2)
         {
             return comparable2.CompareTo(value1);
         }
-        else
-        {
-            var convertedValue1 = value1?.ToString();
-            var convertedValue2 = value2?.ToString();
+        
+        var convertedValue1 = value1?.ToString();
+        var convertedValue2 = value2?.ToString();
 
-            return string.Compare(convertedValue1, convertedValue2, StringComparison.Ordinal);
-        }
+        return string.Compare(convertedValue1, convertedValue2, StringComparison.Ordinal);
     }
 }
