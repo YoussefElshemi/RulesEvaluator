@@ -55,16 +55,21 @@ public class RulesEvaluator<T>
 
     private static int CompareValues<T1, T2>(T1 value1, T2 value2)
     {
-        if (value1 is IComparable<T2> comparable1 && value2 is T1)
+        if (ReferenceEquals(value1, value2))
+        {
+            return 0;
+        }
+
+        if (value1 is IComparable<T2> comparable1)
         {
             return comparable1.CompareTo(value2);
         }
-        
-        if (value2 is IComparable<T1> comparable2 && value1 is T2)
+
+        if (value2 is IComparable<T1> comparable2)
         {
-            return comparable2.CompareTo(value1);
+            return -comparable2.CompareTo(value1);
         }
-        
+
         var convertedValue1 = value1?.ToString();
         var convertedValue2 = value2?.ToString();
 
