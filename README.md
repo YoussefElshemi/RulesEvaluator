@@ -2,9 +2,6 @@
 # RulesEvaluator
 
 ## Overview
-RulesEvaluator is a .NET package designed to provide a flexible and expressive way to evaluate sets of rules on custom data models. It enables you to define complex rule sets using a JSON-based syntax and then evaluate those rules against instances of your custom classes.
-
-## Overview
 
 RulesEvaluator is a .NET package designed to provide a flexible and expressive way to evaluate sets of rules on custom data models. It enables you to define complex rule sets using a JSON-based syntax and then evaluate those rules against instances of your custom classes.
 
