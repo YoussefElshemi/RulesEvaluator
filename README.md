@@ -31,6 +31,7 @@ RulesEvaluator supports various conditions that you can use to define the logic 
 - **LessThan:** Checks if the field is less than the specified value.
 - **GreaterThanEqual:** Checks if the field is greater than or equal to the specified value.
 - **LessThanEqual:** Checks if the field is less than or equal to the specified value.
+- **In:** Checks if the field's value is in a specified list of values.
 - **Contains:** Checks if the field contains the specified value.
 - **StartsWith:** Checks if the field starts with the specified value.
 - **EndsWith:** Checks if the field ends with the specified value.

@@ -677,6 +677,52 @@ public class RulesEvaluatorTests
     }
     
     [Fact]
+    public void Test_String_InCondition_ReturnsTrue()
+    {
+        // Arrange
+        var rule = new Rule
+        {
+            Field = "Field",
+            Condition = Conditions.In,
+            Value = new List<string> { "Foo" }
+        };
+
+        var value = new ExampleObject
+        {
+            Field = "Foo"
+        };
+        
+        // Act
+        var actual = _rulesEvaluator.Evaluate(rule, value);
+        
+        // Assert
+        Assert.True(actual);
+    }
+    
+    [Fact]
+    public void Test_String_InCondition_ReturnsFalse()
+    {
+        // Arrange
+        var rule = new Rule
+        {
+            Field = "Field",
+            Condition = Conditions.In,
+            Value = new List<string> { "Foo" }
+        };
+
+        var value = new ExampleObject
+        {
+            Field = "Bar"
+        };
+        
+        // Act
+        var actual = _rulesEvaluator.Evaluate(rule, value);
+        
+        // Assert
+        Assert.True(actual);
+    }
+    
+    [Fact]
     public void Test_String_EqualToCondition_ReturnsTrue()
     {
         // Arrange

@@ -8,6 +8,7 @@ public enum Conditions
     LessThan,
     GreaterThanEqual,
     LessThanEqual,
+    In,
     Contains,
     StartsWith,
     EndsWith

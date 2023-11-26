@@ -32,6 +32,7 @@ public class RulesEvaluator<T>
                 Conditions.LessThan => CompareValues(value, rule.Value) < 0,
                 Conditions.GreaterThanEqual => CompareValues(value, rule.Value) >= 0,
                 Conditions.LessThanEqual => CompareValues(value, rule.Value) <= 0,
+                Conditions.In when rule.Value is IEnumerable<object> inValues => inValues.Contains(value, EqualityComparer<object>.Default!),
                 Conditions.Contains when value is string stringValue => stringValue.Contains(rule.Value?.ToString()!, StringComparison.OrdinalIgnoreCase),
                 Conditions.StartsWith when value is string stringValue => stringValue.StartsWith(rule.Value?.ToString()!, StringComparison.OrdinalIgnoreCase),
                 Conditions.EndsWith when value is string stringValue => stringValue.EndsWith(rule.Value?.ToString()!, StringComparison.OrdinalIgnoreCase),
