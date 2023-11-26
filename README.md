@@ -21,61 +21,70 @@ To use RulesEvaluator in your .NET project, you can install the package via NuGe
 Rules are defined using a JSON syntax that represents the logical conditions to be evaluated. You can use various logical operators like "And," "Or," and "Not" to create complex rule structures. Each rule consists of a field, a condition, and a value.
 
 Example RuleSet JSON:
-
-    {
-	    "And": [
-	        {
-	            "Field": "Field",
-	            "Condition": "GreaterThan",
-	            "Value": 6
-	        },
-	        {
-	            "And": [
-	                {
-	                    "Field": "Field2",
-	                    "Condition": "LessThan",
-	                    "Value": 9
-	                },
-	                {
-	                    "Field": "Field3",
-	                    "Condition": "LessThan",
-	                    "Value": 9
-	                }
-	            ]
-	        }
-	    ]
-    }
+```json
+{
+    "And": [
+        {
+            "Field": "Field",
+            "Condition": "GreaterThan",
+            "Value": 6
+        },
+        {
+            "And": [
+                {
+                    "Field": "Field2",
+                    "Condition": "EqualTo",
+                    "Value": 6
+                },
+                {
+                    "Field": "Field2",
+                    "Condition": "LessThan",
+                    "Value": 9
+                },
+                {
+                    "Field": "Field3",
+                    "Condition": "LessThan",
+                    "Value": 9
+                }
+            ]
+        }
+    ]
+}
+```
 
 ### Custom Class
 
 Create a custom class that represents the data structure you want to evaluate the rules against.
 
-    public class CustomClass
-    {
-	    public int Field { get; set; }
-	    
-	    public int Field2 { get; set; }
-	    
-	    public int Field3 { get; set; }
-	}
+```csharp
+public class CustomClass
+{
+    public int Field { get; set; }
+    
+    public int Field2 { get; set; }
+    
+    public int Field3 { get; set; }
+}
+```
 
 ### Evaluate Rules
 
 Use the RulesEvaluator to deserialize the rule set, create an instance of your custom class, and then evaluate the rules against the instance.
+```csharp
+using Newtonsoft.Json;
+using RulesEvaluator.Evaluators;
+using RulesEvaluator.Models;
 
-    using Newtonsoft.Json;
-	using RulesEvaluator.Evaluators;
-	using RulesEvaluator.Models;
+var jsonRuleSet = //... (as shown in the example above)
+var rule = JsonConvert.DeserializeObject<Rule>(jsonRuleSet)!;
 
-	var jsonRuleSet = //... (as shown in the example above)
-	var rule = JsonConvert.DeserializeObject<Rule>(jsonRuleSet)!;
+var customInstance = new CustomClass { Field = 7, Field2 = 6, Field3 = 7 };
 
-	var customInstance = new CustomClass { Field = 7, Field2 = 6, Field3 = 7 };
+var rulesEvaluator = new RulesEvaluator<CustomClass>();
+var result = rulesEvaluator.Evaluate(rule, customInstance);
 
-	var rulesEvaluator = new RulesEvaluator<CustomClass>();
-	var result = rulesEvaluator.Evaluate(rule, customInstance);
-
-	Console.WriteLine(result.ToString());
+Console.WriteLine(result.ToString());
+```
 
 The `result` will indicate whether the provided instance satisfies the defined rules.
 
