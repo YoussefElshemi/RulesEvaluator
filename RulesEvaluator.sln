@@ -1,8 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RulesEvaluator", "RulesEvaluator\RulesEvaluator.csproj", "{5BC05F33-A5F3-419A-B496-751813AF8BCF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RulesEvaluator", "src\RulesEvaluator\RulesEvaluator.csproj", "{5BC05F33-A5F3-419A-B496-751813AF8BCF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RulesEvaluator.UnitTests", "RulesEvaluator.UnitTests\RulesEvaluator.UnitTests.csproj", "{DD482548-F641-43B9-886F-0560DD292BC1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RulesEvaluator.Tests", "tests\RulesEvaluator.Tests\RulesEvaluator.Tests.csproj", "{DD482548-F641-43B9-886F-0560DD292BC1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

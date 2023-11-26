@@ -7,6 +7,7 @@
 
         <IsPackable>false</IsPackable>
         <IsTestProject>true</IsTestProject>
+        <RootNamespace>RulesEvaluator.Tests</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
@@ -23,7 +24,11 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\RulesEvaluator\RulesEvaluator.csproj" />
+      <ProjectReference Include="..\..\src\RulesEvaluator\RulesEvaluator.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\..\src\RulesEvaluator\RulesEvaluator.csproj" />
+    </ItemGroup>
+    
 </Project>

@@ -1,9 +1,10 @@
-using RulesEvaluator.Enums;
 using RulesEvaluator.Evaluators;
+using RulesEvaluator.Enums;
 using RulesEvaluator.Models;
 using RulesEvaluator.UnitTests.Models;
 
-namespace RulesEvaluator.UnitTests;
+namespace RulesEvaluator.Tests;
+
 
 public class RulesEvaluatorTests
 {
