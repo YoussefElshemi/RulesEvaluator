@@ -51,12 +51,7 @@ Example RuleSet JSON:
                     "Field": "Field2",
                     "Condition": "EqualTo",
                     "Value": 6
-                },
-                {
-                    "Field": "Field2",
-                    "Condition": "LessThan",
-                    "Value": 9
-                },
+                }
                 {
                     "Field": "Field3",
                     "Condition": "LessThan",
