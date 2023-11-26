@@ -13,7 +13,7 @@ To use RulesEvaluator in your .NET project, you can install the package via NuGe
 
 ## Getting Started
 
-## Rule Operators
+### Rule Operators
 
 Rule operators define the comparison or logic applied when evaluating rules. The following rule operators are supported:
 
@@ -22,7 +22,7 @@ Rule operators define the comparison or logic applied when evaluating rules. The
     - **Or:** Logical OR operator.
     - **Not:** Logical NOT operator.
 
-## Rule Conditions
+### Rule Conditions
 
 RulesEvaluator supports various conditions that you can use to define the logic for rule evaluation. The available conditions are represented by the `Conditions` enum:
 
