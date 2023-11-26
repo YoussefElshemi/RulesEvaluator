@@ -16,6 +16,15 @@ To use RulesEvaluator in your .NET project, you can install the package via NuGe
 
 ## Getting Started
 
+## Rule Operators
+
+Rule operators define the comparison or logic applied when evaluating rules. The following rule operators are supported:
+
+- **Default Operators:**
+    - **And:** Logical AND operator.
+    - **Or:** Logical OR operator.
+    - **Not:** Logical NOT operator.
+
 ## Rule Conditions
 
 RulesEvaluator supports various conditions that you can use to define the logic for rule evaluation. The available conditions are represented by the `Conditions` enum:
@@ -51,7 +60,7 @@ Example RuleSet JSON:
                     "Field": "Field2",
                     "Condition": "EqualTo",
                     "Value": 6
-                }
+                },
                 {
                     "Field": "Field3",
                     "Condition": "LessThan",

@@ -16,7 +16,8 @@
         <Authors>Youssef Elshemi</Authors>
         <Description>RulesEvaluator is a .NET package designed to provide a flexible and expressive way to evaluate sets of rules on custom data models. It enables you to define complex rule sets using a JSON-based syntax and then evaluate those rules against instances of your custom classes.</Description>
         <PackageTags>RulesEvaluator .NET RuleEngine Validation ExpressionEvaluation JSONRules Customization LogicEvaluation ConditionalLogic BusinessRules</PackageTags>
-
+        
+        <PackageReadmeFile>README.md</PackageReadmeFile>
         <RepositoryUrl>https://github.com/YoussefElshemi/RulesEvaluator</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
 
