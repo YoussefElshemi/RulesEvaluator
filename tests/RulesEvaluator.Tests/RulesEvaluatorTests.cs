@@ -719,7 +719,7 @@ public class RulesEvaluatorTests
         var actual = _rulesEvaluator.Evaluate(rule, value);
         
         // Assert
-        Assert.True(actual);
+        Assert.False(actual);
     }
     
     [Fact]
