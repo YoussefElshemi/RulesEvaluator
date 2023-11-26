@@ -26,9 +26,5 @@
     <ItemGroup>
       <ProjectReference Include="..\..\src\RulesEvaluator\RulesEvaluator.csproj" />
     </ItemGroup>
-
-    <ItemGroup>
-      <ProjectReference Include="..\..\src\RulesEvaluator\RulesEvaluator.csproj" />
-    </ItemGroup>
     
 </Project>
