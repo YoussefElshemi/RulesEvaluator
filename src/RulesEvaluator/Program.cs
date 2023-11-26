@@ -18,11 +18,6 @@ var jsonRuleSet = @"
                     ""Value"": 6
                 },
                 {
-                    ""Field"": ""Field2"",
-                    ""Condition"": ""LessThan"",
-                    ""Value"": 9
-                },
-                {
                     ""Field"": ""Field3"",
                     ""Condition"": ""LessThan"",
                     ""Value"": 9
