@@ -17,10 +17,9 @@ To use RulesEvaluator in your .NET project, you can install the package via NuGe
 
 Rule operators define the comparison or logic applied when evaluating rules. The following rule operators are supported:
 
-- **Default Operators:**
-    - **And:** Logical AND operator.
-    - **Or:** Logical OR operator.
-    - **Not:** Logical NOT operator.
+- **And:** Logical AND operator.
+- **Or:** Logical OR operator.
+- **Not:** Logical NOT operator.
 
 ### Rule Conditions
 
