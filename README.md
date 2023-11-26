@@ -87,11 +87,11 @@ using RulesEvaluator.Evaluators;
 using RulesEvaluator.Models;
 
 var jsonRuleSet = //... (as shown in the example above)
+
 var rule = JsonConvert.DeserializeObject<Rule>(jsonRuleSet)!;
+var rulesEvaluator = new RulesEvaluator<CustomClass>();
 
 var customInstance = new CustomClass { Field = 7, Field2 = 6, Field3 = 7 };
-
-var rulesEvaluator = new RulesEvaluator<CustomClass>();
 var result = rulesEvaluator.Evaluate(rule, customInstance);
 
 Console.WriteLine(result.ToString());

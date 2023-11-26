@@ -28,9 +28,9 @@ var jsonRuleSet = @"
 }";
 
 var rule = JsonConvert.DeserializeObject<Rule>(jsonRuleSet)!;
-var customInstance = new CustomClass { Field = 7, Field2 = 6, Field3 = 7 };
-
 var rulesEvaluator = new RulesEvaluator<CustomClass>();
+
+var customInstance = new CustomClass { Field = 7, Field2 = 6, Field3 = 7 };
 var result = rulesEvaluator.Evaluate(rule, customInstance);
 
 Console.WriteLine(result.ToString());
