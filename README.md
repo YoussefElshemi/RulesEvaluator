@@ -116,7 +116,3 @@ Contributions are welcome! If you encounter any issues, have feature requests, o
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](./LICENSE) for details.
-
-----------
-
-Feel free to customize this readme to fit your project structure and additional features. Add more details about customization, advanced configurations, and anything else that might be relevant for users of your RulesEvaluator package.
